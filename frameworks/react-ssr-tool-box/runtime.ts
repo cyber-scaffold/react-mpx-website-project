@@ -6,6 +6,7 @@ export { setAndInitializeRuntimeConfig } from "@/frameworks/react-ssr-tool-box/r
 export { getRuntimeConfiguration } from "@/frameworks/react-ssr-tool-box/runtime/getRuntimeConfiguration";
 export { getDehydratedResource } from "@/frameworks/react-ssr-tool-box/runtime/getDehydratedResource";
 export { getHydrationResource } from "@/frameworks/react-ssr-tool-box/runtime/getHydrationResource";
+export { getResourcePathInfo } from "@/frameworks/react-ssr-tool-box/runtime/getResourcePathInfo";
 export { getResourceSummary } from "@/frameworks/react-ssr-tool-box/runtime/getResourceSummary";
 
 export { saveProjectDirectoryAbsolutePath } from "@/frameworks/react-ssr-tool-box/runtime/globalSingletonStorage";
