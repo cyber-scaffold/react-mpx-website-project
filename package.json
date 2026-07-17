@@ -1,6 +1,7 @@
 {
   "name": "mpa-react-ssr-server-project",
   "version": "1.0.0",
+  "title": "来自package.json中的title",
   "description": "基于MVC设计模式和React视图层的能进行SSR的传统多页网站项目",
   "main": "./dist/server.js",
   "scripts": {

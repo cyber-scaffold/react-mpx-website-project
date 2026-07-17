@@ -2,9 +2,8 @@ import { Router, Request } from "express";
 import { injectable, inject } from "inversify";
 
 import { IOCContainer } from "@/main/server/cores/IOCContainer";
-import { ServerSiderRenderService } from "@/main/server/services/ServerSiderRenderService";
+import { ServerSiderRenderService } from "@/main/server/services/render/ServerSiderRenderService";
 import { responseHtmlWrapper } from "@/main/server/utils/responseHtmlWrapper";
-
 
 @injectable()
 export class DetailPageController {
@@ -22,7 +21,8 @@ export class DetailPageController {
 
   /** 路由的业务逻辑 **/
   public async execute(request: Request): Promise<string> {
-    return await this.$ServerSiderRenderService.computedHTMLContent({
+    return await this.$ServerSiderRenderService.render({
+      request,
       alias: "DetailPage",
       title: "详情页",
       keywords: [],

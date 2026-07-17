@@ -16,13 +16,15 @@ import RenderElement from "$$sourceCodeFilePath$$";
 
 function bootstrap() {
   let rootElement;
-  if (typeof (window as any)._ROOT_ELEMENT_ == "string") {
-    rootElement = document.getElementById((window as any)._ROOT_ELEMENT_);
+  if (typeof (window as any)._HYDRATE_MOUNT_ELEMENT_ == "string") {
+    rootElement = document.getElementById((window as any)._HYDRATE_MOUNT_ELEMENT_);
   } else {
-    rootElement = (window as any)._ROOT_ELEMENT_;
+    rootElement = (window as any)._HYDRATE_MOUNT_ELEMENT_;
   };
-  //var ApplicationElement=React.createElement(RenderElement,window._CONTENT_FROM_SERVER_);
-  //window._APPLICATION_MOUNT_ELEMENT_=createRoot(rootElement).render(ApplicationElement);
+  //var HydrateElement=React.createElement(RenderElement,window._INJECTABLE_DEHYDRATE_CONTENT_);
+  //window._HYDRATE_MOUNT_ELEMENT_=createRoot(rootElement).render(HydrateElement);
 
-  (window as any)._APPLICATION_MOUNT_ELEMENT_ = createRoot(rootElement).render(<RenderElement { ...(window as any)._CONTENT_FROM_SERVER_ } />);
+  (window as any)._HYDRATE_MOUNT_ELEMENT_ = createRoot(rootElement).render(
+    <RenderElement { ...(window as any)._INJECTABLE_DEHYDRATE_CONTENT_ } />
+  );
 }; bootstrap();

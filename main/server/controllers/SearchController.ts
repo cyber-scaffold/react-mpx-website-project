@@ -2,7 +2,7 @@ import { Router, Request } from "express";
 import { injectable, inject } from "inversify";
 
 import { IOCContainer } from "@/main/server/cores/IOCContainer";
-import { ServerSiderRenderService } from "@/main/server/services/ServerSiderRenderService";
+import { ServerSiderRenderService } from "@/main/server/services/render/ServerSiderRenderService";
 
 import { responseHtmlWrapper } from "@/main/server/utils/responseHtmlWrapper";
 
@@ -25,7 +25,8 @@ export class SearchController {
     console.log("request.query", request.query);
     console.log("request.body", request.body);
     const content = { list: Array(10).fill(1) };
-    return await this.$ServerSiderRenderService.computedHTMLContent({
+    return await this.$ServerSiderRenderService.render({
+      request,
       alias: "SearchPage",
       title: "搜索结果页",
       keywords: [],
