@@ -1,4 +1,3 @@
-import os from "os";
 import path from "path";
 import { getRuntimeConfiguration } from "@/frameworks/react-ssr-tool-box/runtime";
 
@@ -8,7 +7,6 @@ export type ResourcePathInfoType = {
   publicResourceDirectory: string
   swaggerResourceDirectory: string
   extractResourceDirectory: string
-  custmerStaticResourceDirectory: string
   projectStaticResourceDirectory: string
 };
 
@@ -27,11 +25,6 @@ export async function getResourcePathInfo(): Promise<ResourcePathInfoType> {
    * **/
   const publicResourceDirectory = path.join(assetsDirectoryPath, "public");
   /**
-   * 用户自定义的静态资源指向的目录
-   * 框架层的基准目录是根据 项目根目录的绝对路径 计算得到的
-   * **/
-  const custmerStaticResourceDirectory = path.join(os.homedir(), "statics");
-  /**
    * 项目中的静态资源指向的目录
    * 框架层的基准目录是根据 项目根目录的绝对路径 计算得到的
    * **/
@@ -46,7 +39,6 @@ export async function getResourcePathInfo(): Promise<ResourcePathInfoType> {
     publicResourceDirectory,
     swaggerResourceDirectory,
     extractResourceDirectory,
-    custmerStaticResourceDirectory,
     projectStaticResourceDirectory
   };
 };

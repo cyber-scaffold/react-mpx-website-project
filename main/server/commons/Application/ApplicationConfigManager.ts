@@ -1,3 +1,5 @@
+import os from "os";
+import path from "path";
 import { injectable } from "inversify";
 
 import { getResourcePathInfo } from "@/frameworks/react-ssr-tool-box/runtime";
@@ -39,6 +41,12 @@ export class ApplicationConfigManager {
     password: "gaea0571"
   };
 
+  /**
+   * 用户自定义的静态资源指向的目录
+   * 框架层的基准目录是根据 项目根目录的绝对路径 计算得到的
+   * **/
+  private custmerStaticResourceDirectory: string = path.join(os.homedir(), "statics");
+
   /** 初始化并加载配置到运行时 **/
   public async initialize() {
 
@@ -55,7 +63,7 @@ export class ApplicationConfigManager {
       rabbitmq: this.rabbitmq,
       assetsDirectoryName: resourcePathInfo.assetsDirectoryName,
       extractResourceDirectory: resourcePathInfo.extractResourceDirectory,
-      custmerStaticResourceDirectory: resourcePathInfo.custmerStaticResourceDirectory,
+      custmerStaticResourceDirectory: this.custmerStaticResourceDirectory,
       projectStaticResourceDirectory: resourcePathInfo.projectStaticResourceDirectory,
       swaggerResourceDirectory: resourcePathInfo.swaggerResourceDirectory,
       publicResourceDirectory: resourcePathInfo.publicResourceDirectory
