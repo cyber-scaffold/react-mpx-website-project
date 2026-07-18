@@ -6,7 +6,7 @@ import { promisify } from "util";
 import pathExists from "path-exists";
 import { injectable } from "inversify";
 
-import { IOCContainer } from "@/frameworks/mpa-website-build-tool/cores/IOCContainer";
+import { IOCContainer } from "@/frameworks/mpx-website-build-tool/cores/IOCContainer";
 import type { MaterielCompilationInfoType } from "@/frameworks/react-ssr-tool-box/compilation";
 
 @injectable()

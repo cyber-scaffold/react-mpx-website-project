@@ -1,12 +1,12 @@
 {
-  "name": "react-ssr-website-project",
+  "name": "react-mpx-website-project",
   "version": "1.0.0",
   "title": "来自package.json中的title",
   "description": "基于MVC设计模式和React服务端渲染的多页网站项目",
   "main": "./dist/server.js",
   "scripts": {
-    "dev": "node -r esbuild-register ./frameworks/mpa-website-build-tool/development.ts",
-    "build": "node -r esbuild-register ./frameworks/mpa-website-build-tool/build.ts"
+    "dev": "node -r esbuild-register ./frameworks/mpx-website-build-tool/development.ts",
+    "build": "node -r esbuild-register ./frameworks/mpx-website-build-tool/build.ts"
   },
   "keywords": [],
   "author": "",
