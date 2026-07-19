@@ -47,8 +47,8 @@ export class MakeHydrateResource {
    * **/
   public async makeResourceWithWatchMode(): Promise<void | boolean> {
     /** 获取注水物料的编译结果的管理数据库 **/
-    const hydrationCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getHydrateCompileDatabase();
-    await hydrationCompileDatabase.write();
+    const hydrateCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getHydrateCompileDatabase();
+    await hydrateCompileDatabase.write();
     /** 生成编译对象 **/
     const webpackCompiler: Compiler = await this.$HydrateConfigManager.getWebpackDevelopmentCompiler();
     /** 开启一个编译对象 **/
@@ -59,8 +59,8 @@ export class MakeHydrateResource {
         // console.log(stats.toString({ colors: true }));
         const latestAssetsFileList = filterWebpackStats(stats.toJson({ all: false, assets: true, source: false, outputPath: true }));
         /** 在json数据库中保存资源信息 **/
-        hydrationCompileDatabase.data["assets"] = latestAssetsFileList;
-        await hydrationCompileDatabase.write();
+        hydrateCompileDatabase.data["assets"] = latestAssetsFileList;
+        await hydrateCompileDatabase.write();
       };
     });
   };
@@ -69,8 +69,8 @@ export class MakeHydrateResource {
    * 在build模式下进行物料制作
    * **/
   public async makeResourceWithBuildMode(): Promise<void | boolean> {
-    const hydrationCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getHydrateCompileDatabase();
-    await hydrationCompileDatabase.write();
+    const hydrateCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getHydrateCompileDatabase();
+    await hydrateCompileDatabase.write();
     /** 生成编译对象 **/
     const webpackCompiler: Compiler = await this.$HydrateConfigManager.getWebpackProductionCompiler();
     /** 执行编译并记录结果 **/
@@ -81,8 +81,8 @@ export class MakeHydrateResource {
         // console.log(stats.toString({ colors: true }));
         const latestAssetsFileList = filterWebpackStats(stats.toJson({ all: false, assets: true, source: false, outputPath: true }));
         /** 在json数据库中保存资源信息 **/
-        hydrationCompileDatabase.data["assets"] = latestAssetsFileList;
-        await hydrationCompileDatabase.write();
+        hydrateCompileDatabase.data["assets"] = latestAssetsFileList;
+        await hydrateCompileDatabase.write();
       };
     });
   };

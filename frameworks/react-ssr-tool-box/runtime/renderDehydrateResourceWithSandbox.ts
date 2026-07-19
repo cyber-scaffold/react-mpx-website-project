@@ -15,8 +15,8 @@ export async function renderDehydrateResourceWithSandbox(resourceFilePath: strin
   const $RuntimeConfigManager = IOCContainer.get(RuntimeConfigManager);
   const { projectDirectoryPath, dehydrateResourceDirectoryPath } = $RuntimeConfigManager.getRuntimeConfig();
   /** 由于脱水物料的路径信息使用的是相对路径,最终的真实路径需要在运行时进行实时计算 **/
-  const realDehydratedResourceFilePath = path.resolve(dehydrateResourceDirectoryPath, resourceFilePath);
-  const resourceFileCode = await promisify(fs.readFile)(realDehydratedResourceFilePath, "utf-8");
+  const realDehydrateResourceFilePath = path.resolve(dehydrateResourceDirectoryPath, resourceFilePath);
+  const resourceFileCode = await promisify(fs.readFile)(realDehydrateResourceFilePath, "utf-8");
   const requireProject: NodeJS.Require = Module.createRequire(path.resolve(projectDirectoryPath, "./package.json"));
   const sandbox = {
     module: { exports: {} },
@@ -25,12 +25,12 @@ export async function renderDehydrateResourceWithSandbox(resourceFilePath: strin
     window: getWindow(),
     document: getDocument(),
     require: requireProject,
-    __dirname: path.dirname(realDehydratedResourceFilePath),
-    __filename: realDehydratedResourceFilePath,
+    __dirname: path.dirname(realDehydrateResourceFilePath),
+    __filename: realDehydrateResourceFilePath,
     console
   };
   vm.createContext(sandbox);
-  vm.runInContext(resourceFileCode, sandbox, { filename: realDehydratedResourceFilePath });
+  vm.runInContext(resourceFileCode, sandbox, { filename: realDehydrateResourceFilePath });
   const moduleExportInfo = (sandbox.exports as any);
   if (moduleExportInfo.default) {
     return moduleExportInfo.default(content);

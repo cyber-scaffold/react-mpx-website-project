@@ -31,8 +31,8 @@ export class DLLConfigManager {
       },
       output: {
         path: path.resolve(assetsDirectoryPath, "./dll/"),
-        filename: "hydration.dll.js",
-        library: "hydrationDLLVendor"
+        filename: "hydrate.dll.js",
+        library: "hydrateDLLVendor"
       },
       resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"]
@@ -49,16 +49,16 @@ export class DLLConfigManager {
         new WebpackBar({ name: "生成DLL动态链接库" }),
         new MiniCssExtractPlugin({
           linkType: "text/css",
-          filename: "hydration.dll.css"
+          filename: "hydrate.dll.css"
         }),
         new DefinePlugin({
           "process.env.NODE_ENV": "window._INJECT_RUNTIME_FROM_SERVER_.env.NODE_ENV"
         }),
         new DllPlugin({
           // 清单文件描述文件
-          path: path.resolve(assetsDirectoryPath, "./dll/hydration.dll.json"),
+          path: path.resolve(assetsDirectoryPath, "./dll/hydrate.dll.json"),
           // 必须与 output.library 保持一致
-          name: "hydrationDLLVendor"
+          name: "hydrateDLLVendor"
         })
       ]
     };

@@ -21,7 +21,7 @@ export class MakeDehydrateResource {
 
   constructor (
     @inject(CompilationMaterielResourceDatabaseManager) private readonly $CompilationMaterielResourceDatabaseManager: CompilationMaterielResourceDatabaseManager,
-    @inject(ConvertDehydrateEntryFile) private readonly $ConvertDehydrationEntryFile: ConvertDehydrateEntryFile,
+    @inject(ConvertDehydrateEntryFile) private readonly $ConvertDehydrateEntryFile: ConvertDehydrateEntryFile,
     @inject(CompilationConfigManager) private readonly $CompilationConfigManager: CompilationConfigManager,
     @inject(DehydrateConfigManager) private readonly $DehydrateConfigManager: DehydrateConfigManager
   ) { }
@@ -39,7 +39,7 @@ export class MakeDehydrateResource {
       };
       return [everyMaterielInfo.alias, everyMaterielInfo];
     }));
-    await this.$ConvertDehydrationEntryFile.initialize(materielPairs);
+    await this.$ConvertDehydrateEntryFile.initialize(materielPairs);
   };
 
   /**
@@ -47,8 +47,8 @@ export class MakeDehydrateResource {
    * **/
   public async makeResourceWithWatchMode() {
     /** 获取脱水物料的编译结果的管理数据库 **/
-    const dehydrationCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getDehydrateCompileDatabase();
-    await dehydrationCompileDatabase.write();
+    const dehydrateCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getDehydrateCompileDatabase();
+    await dehydrateCompileDatabase.write();
     /** 获取开发环境下的编译对象 **/
     const webpackCompiler: Compiler = await this.$DehydrateConfigManager.getWebpackDevelopmentCompiler();
     webpackCompiler.watch({ ignored: "**/node_modules/**", aggregateTimeout: 2000, poll: 1000 }, async (error, stats) => {
@@ -58,8 +58,8 @@ export class MakeDehydrateResource {
         // console.log(stats.toString({ colors: true }));
         const latestAssetsFileList = filterWebpackStats(stats.toJson({ all: false, assets: true, source: false, outputPath: true }));
         /** 在json数据库中保存资源信息 **/
-        dehydrationCompileDatabase.data["assets"] = latestAssetsFileList;
-        await dehydrationCompileDatabase.write();
+        dehydrateCompileDatabase.data["assets"] = latestAssetsFileList;
+        await dehydrateCompileDatabase.write();
       };
     });
   };
@@ -69,8 +69,8 @@ export class MakeDehydrateResource {
    * **/
   public async makeResourceWithBuildMode() {
     /** 获取脱水物料的编译结果的管理数据库 **/
-    const dehydrationCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getDehydrateCompileDatabase();
-    await dehydrationCompileDatabase.write();
+    const dehydrateCompileDatabase = this.$CompilationMaterielResourceDatabaseManager.getDehydrateCompileDatabase();
+    await dehydrateCompileDatabase.write();
     /** 获取开发环境下的编译对象 **/
     const webpackCompiler: Compiler = await this.$DehydrateConfigManager.getWebpackProductionCompiler();
     webpackCompiler.run(async (error, stats) => {
@@ -80,8 +80,8 @@ export class MakeDehydrateResource {
         // console.log(stats.toString({ colors: true }));
         const latestAssetsFileList = filterWebpackStats(stats.toJson({ all: false, assets: true, source: false, outputPath: true }));
         /** 在json数据库中保存资源信息 **/
-        dehydrationCompileDatabase.data["assets"] = latestAssetsFileList;
-        await dehydrationCompileDatabase.write();
+        dehydrateCompileDatabase.data["assets"] = latestAssetsFileList;
+        await dehydrateCompileDatabase.write();
       };
     });
   };

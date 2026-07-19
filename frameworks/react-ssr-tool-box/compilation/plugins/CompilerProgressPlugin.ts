@@ -27,14 +27,14 @@ export class CompilerProgressPlugin {
     // 在编译开始时触发
     compiler.hooks.compile.tap("CompilerProgressPlugin", async (params) => {
       if (this.params.type === "hydrate") {
-        const hydrationCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
-        hydrationCompileDatabase.data["status"] = CompilerProgressStatus.COMPILE;
-        await hydrationCompileDatabase.write();
+        const hydrateCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
+        hydrateCompileDatabase.data["status"] = CompilerProgressStatus.COMPILE;
+        await hydrateCompileDatabase.write();
       };
       if (this.params.type === "dehydrate") {
-        const dehydrationCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
-        dehydrationCompileDatabase.data["status"] = CompilerProgressStatus.COMPILE;
-        await dehydrationCompileDatabase.write();
+        const dehydrateCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
+        dehydrateCompileDatabase.data["status"] = CompilerProgressStatus.COMPILE;
+        await dehydrateCompileDatabase.write();
       };
       // console.log(this.params.alias, "compile");
     });
@@ -42,14 +42,14 @@ export class CompilerProgressPlugin {
     // 在资源即将输出前触发
     compiler.hooks.emit.tapAsync("CompilerProgressPlugin", async (compilation, callback) => {
       if (this.params.type === "hydrate") {
-        const hydrationCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
-        hydrationCompileDatabase.data["status"] = CompilerProgressStatus.EMIT;
-        await hydrationCompileDatabase.write();
+        const hydrateCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
+        hydrateCompileDatabase.data["status"] = CompilerProgressStatus.EMIT;
+        await hydrateCompileDatabase.write();
       };
       if (this.params.type === "dehydrate") {
-        const dehydrationCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
-        dehydrationCompileDatabase.data["status"] = CompilerProgressStatus.EMIT;
-        await dehydrationCompileDatabase.write();
+        const dehydrateCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
+        dehydrateCompileDatabase.data["status"] = CompilerProgressStatus.EMIT;
+        await dehydrateCompileDatabase.write();
       };
       callback();
       // console.log(this.params.alias, "emit");
@@ -58,16 +58,16 @@ export class CompilerProgressPlugin {
     // 在编译完成时触发
     compiler.hooks.done.tap("CompilerProgressPlugin", async (stats) => {
       if (this.params.type === "hydrate") {
-        const hydrationCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
-        hydrationCompileDatabase.data["status"] = CompilerProgressStatus.DONE;
-        // await this.clearHistoryResource(hydrationCompileDatabase.data[this.params.alias]);
-        await hydrationCompileDatabase.write();
+        const hydrateCompileDatabase = this.params.materielResourceDatabaseManager.getHydrateCompileDatabase();
+        hydrateCompileDatabase.data["status"] = CompilerProgressStatus.DONE;
+        // await this.clearHistoryResource(hydrateCompileDatabase.data[this.params.alias]);
+        await hydrateCompileDatabase.write();
       };
       if (this.params.type === "dehydrate") {
-        const dehydrationCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
-        dehydrationCompileDatabase.data["status"] = CompilerProgressStatus.DONE;
-        // await this.clearHistoryResource(dehydrationCompileDatabase.data[this.params.alias]);
-        await dehydrationCompileDatabase.write();
+        const dehydrateCompileDatabase = this.params.materielResourceDatabaseManager.getDehydrateCompileDatabase();
+        dehydrateCompileDatabase.data["status"] = CompilerProgressStatus.DONE;
+        // await this.clearHistoryResource(dehydrateCompileDatabase.data[this.params.alias]);
+        await dehydrateCompileDatabase.write();
       };
       // console.log(this.params.alias, "done");
     });

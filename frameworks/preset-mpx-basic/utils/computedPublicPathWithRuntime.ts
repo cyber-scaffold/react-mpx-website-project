@@ -1,6 +1,6 @@
 import type { MaterielCompilationInfoType } from "@/frameworks/react-ssr-tool-box/compilation";
 
-export type PublicPathWithRuntimeType = "/hydration/" | "/dehydration/";
+export type PublicPathWithRuntimeType = "/hydrate/" | "/dehydrate/";
 
 /**
  * 计算运行时的 __webpack_public_path__ 变量
@@ -16,11 +16,11 @@ export type PublicPathWithRuntimeType = "/hydration/" | "/dehydration/";
 export function computedPublicPathWithRuntime(materielDetailInfo: MaterielCompilationInfoType): PublicPathWithRuntimeType {
   let publicPathWithRuntime: PublicPathWithRuntimeType;
   if (materielDetailInfo.hydrate) {
-    publicPathWithRuntime = "/hydration/";
+    publicPathWithRuntime = "/hydrate/";
     return publicPathWithRuntime;
   };
   if (materielDetailInfo.dehydrate) {
-    publicPathWithRuntime = "/dehydration/";
+    publicPathWithRuntime = "/dehydrate/";
     return publicPathWithRuntime;
   };
   throw new Error(`hydrate or dehydrate is undefined`);
