@@ -1,10 +1,12 @@
+import { createPool } from "mysql2/promise";
 import { injectable, inject } from "inversify";
-import { createPool, Pool, PoolConnection } from "mysql2/promise";
 
 import { ApplicationConfigManager } from "@/main/server/commons/Application/ApplicationConfigManager";
 import { IOCContainer } from "@/main/server/cores/IOCContainer";
 
 import { logger } from "@/main/server/utils/logger";
+
+import type { Pool, PoolConnection } from "mysql2/promise";
 
 @injectable()
 export class MySQLConnectManager {
