@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import { IOCContainer } from "@/frameworks/mpx-website-build-tool/cores/IOCContainer";
-import { FrameworkConfigManager } from "@/frameworks/mpx-website-build-tool/commons/FrameworkConfigManager";
+import { IOCContainer } from "@/frameworks/mpx-build-tool/cores/IOCContainer";
+import { FrameworkConfigManager } from "@/frameworks/mpx-build-tool/commons/FrameworkConfigManager";
 
 // import { MakePublicDLLFile } from "@/frameworks/mpx-ssr-build-tool/actions/MakePublicDLLFile";
-import { MakeMaterielResource } from "@/frameworks/mpx-website-build-tool/actions/MakeMaterielResource";
-import { MakeServerApplication } from "@/frameworks/mpx-website-build-tool/actions/MakeServerApplication";
-import { CompilerActionService } from "@/frameworks/mpx-website-build-tool/services/CompilerActionService";
+import { MakeMaterielResource } from "@/frameworks/mpx-build-tool/actions/MakeMaterielResource";
+import { MakeServerApplication } from "@/frameworks/mpx-build-tool/actions/MakeServerApplication";
+import { CompilerActionService } from "@/frameworks/mpx-build-tool/services/CompilerActionService";
 
 setImmediate(async () => {
   try {

@@ -1,10 +1,10 @@
 import { injectable, inject } from "inversify";
 
-import { IOCContainer } from "@/frameworks/mpx-website-build-tool/cores/IOCContainer";
-import { FrameworkConfigManager } from "@/frameworks/mpx-website-build-tool/commons/FrameworkConfigManager";
+import { IOCContainer } from "@/frameworks/mpx-build-tool/cores/IOCContainer";
+import { FrameworkConfigManager } from "@/frameworks/mpx-build-tool/commons/FrameworkConfigManager";
 import { setCompileConfiguration, makeHydrationResource, makeDehydratedResource } from "@/frameworks/react-ssr-tool-box/compilation";
 
-import { dehydrationEntryFilePreset, hydrationEntryFilePreset } from "@/frameworks/preset-mpx-website";
+import { dehydrationEntryFilePreset, hydrationEntryFilePreset } from "@/frameworks/preset-mpx-basic";
 
 /**
  * 在构建模式下制作脱水和注水物料的控制器

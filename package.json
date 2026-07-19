@@ -5,8 +5,8 @@
   "description": "基于MVC设计模式和React服务端渲染的多页网站项目",
   "main": "./dist/server.js",
   "scripts": {
-    "dev": "node -r esbuild-register ./frameworks/mpx-website-build-tool/development.ts",
-    "build": "node -r esbuild-register ./frameworks/mpx-website-build-tool/build.ts"
+    "dev": "node -r esbuild-register ./frameworks/mpx-build-tool/development.ts",
+    "build": "node -r esbuild-register ./frameworks/mpx-build-tool/build.ts"
   },
   "keywords": [],
   "author": "",

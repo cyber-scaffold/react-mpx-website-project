@@ -1,8 +1,8 @@
 import path from "path";
 import { injectable, inject } from "inversify";
 
-import { IOCContainer } from "@/frameworks/mpx-website-build-tool/cores/IOCContainer";
-import { FrameworkConfigManager } from "@/frameworks/mpx-website-build-tool/commons/FrameworkConfigManager";
+import { IOCContainer } from "@/frameworks/mpx-build-tool/cores/IOCContainer";
+import { FrameworkConfigManager } from "@/frameworks/mpx-build-tool/commons/FrameworkConfigManager";
 
 @injectable()
 export class ScriptLoaderConfigManger {
