@@ -34,7 +34,7 @@ export class ServerSiderRenderService {
           <link href="/favicon.ico" rel="icon" type="image/x-icon" />
           {/* 结构化数据展示 */}
           {_INJECTABLE_DEHYDRATE_CONTENT_.meta.structured ? (
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: `${JSON.stringify(_INJECTABLE_DEHYDRATE_CONTENT_.meta.structured, null, "")}` }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(_INJECTABLE_DEHYDRATE_CONTENT_.meta.structured, null, "") }} />
           ) : null}
           {/** 注水样式 **/}
           {(_HYDRATE_STYLE_TAGS_).map((everyHydrateStyleTagPath: string) => {
