@@ -149,7 +149,7 @@ export class DehydrateInfomationService {
   public async generateInjectableDehydrateContentScript(params: ServerSiderRenderParamsType): Promise<string> {
     const _INJECTABLE_DEHYDRATE_CONTENT_ = await this.generateInjectableDehydrateContent(params);
     return `
-      window._HYDRATE_MOUNT_ELEMENT_=document.getElementById("root");
+      window._HYDRATE_MOUNT_ELEMENT_="root";
       window._INJECT_RUNTIME_FROM_SERVER_={env:{NODE_ENV:${JSON.stringify(process.env.NODE_ENV)}}};
       window._INJECTABLE_DEHYDRATE_CONTENT_=${JSON.stringify(_INJECTABLE_DEHYDRATE_CONTENT_)};
     `
