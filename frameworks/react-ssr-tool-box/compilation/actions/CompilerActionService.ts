@@ -18,9 +18,9 @@ export class CompilerActionService {
    * **/
   public async initialize() {
     const { assetsDirectoryPath } = await this.$CompilationConfigManager.getRuntimeConfig();
-    // if (await pathExists(assetsDirectoryPath)) {
-    //   return false;
-    // };
+    if (await pathExists(assetsDirectoryPath)) {
+      return false;
+    };
     await promisify(fs.mkdir)(assetsDirectoryPath, { recursive: true });
   };
 

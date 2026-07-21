@@ -1,6 +1,7 @@
 import vm from "vm";
 import fs from "fs";
 import path from "path";
+import slash from "slash";
 import Module from "module";
 import { promisify } from "util";
 import pathExists from "path-exists";
@@ -8,6 +9,7 @@ import { injectable } from "inversify";
 
 import { IOCContainer } from "@/frameworks/mpx-build-tool/cores/IOCContainer";
 import type { MaterielCompilationInfoType } from "@/frameworks/react-ssr-tool-box/compilation";
+
 
 @injectable()
 export class FrameworkConfigManager {

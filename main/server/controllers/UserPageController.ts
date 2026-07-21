@@ -1,10 +1,11 @@
-import { Router, Request } from "express";
+import { Router } from "express";
 import { injectable, inject } from "inversify";
 
 import { IOCContainer } from "@/main/server/cores/IOCContainer";
 import { ServerSiderRenderService } from "@/main/server/services/render/ServerSiderRenderService";
-
 import { responseHtmlWrapper } from "@/main/server/utils/responseHtmlWrapper";
+
+import type { Request } from "express";
 
 @injectable()
 export class UserPageController {

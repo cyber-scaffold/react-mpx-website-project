@@ -59,7 +59,7 @@ export class RuntimeConfigManager {
 
   /** 注水资源的输出位置(前端javascript和css)(根据 物料资产的目录 和 对应文件夹名称 计算得到) **/
   private getHydrateResourceDirectoryPath() {
-    return path.resolve(this.getAssetsDirectoryPath(), this.hydrateResourceDirectoryName)
+    return path.resolve(this.getAssetsDirectoryPath(), this.hydrateResourceDirectoryName);
   };
 
   /** 初始化配置并计算出剩余的属性 **/

@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import slash from "slash";
 import { promisify } from "util";
 
 import { MaterielPairsType, PresetPairsType } from "@/frameworks/react-ssr-tool-box/compilation";
@@ -11,7 +12,7 @@ export async function hydrateEntryFilePreset(materielPairs: MaterielPairsType): 
   const virtualFileVolumePairs: PresetPairsType = await Promise.all(materielPairs.map(async ([alias, materielDetailInfo]) => {
     const virtualEntryModuleName = `./${alias}.entry.tsx`;
     const virtualEntryModuleContent = hydrateTemplateFileContent
-      .replace("$$sourceCodeFilePath$$", materielDetailInfo.source)
+      .replace("$$sourceCodeFilePath$$", slash(materielDetailInfo.source))
       .replace("$$webpackPublicPathWithRuntime$$", computedPublicPathWithRuntime(materielDetailInfo));
     return [virtualEntryModuleName, virtualEntryModuleContent];
   }));

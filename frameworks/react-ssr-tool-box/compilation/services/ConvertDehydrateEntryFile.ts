@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import memfs from "memfs";
+import slash from "slash";
 import { ufs } from "unionfs";
 import { v4 as uuid } from "uuid";
 import { fromPairs } from "lodash";

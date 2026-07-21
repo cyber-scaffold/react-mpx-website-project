@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import slash from "slash";
 import memfs from "memfs";
 import { ufs } from "unionfs";
 import { promisify } from "util";
@@ -42,7 +43,7 @@ export class ServerProjectVirtualFile {
   public async initialize() {
     const { entryFile } = this.$FrameworkConfigManager.getRuntimeConfig();
     const originContent = await this.getVirtualEntryFileAndReplaceContent();
-    const replacedContent = originContent.replace("$$REAL_ENTRY_FILE_FULL_PATH$$", entryFile);
+    const replacedContent = originContent.replace("$$REAL_ENTRY_FILE_FULL_PATH$$", slash(entryFile));
     /** 在虚拟文件系统中生成一个空白的架构临时文件 **/
     memfs.vol.fromJSON({ "./server.entry.ts": replacedContent }, this.virtualDirectoryPath);
   };
